@@ -72,11 +72,12 @@
           <label class="form-label" for="input-contact">WhatsApp number</label>
           <input
             class="form-input"
-            type="text"
+            type="tel"
             id="input-contact"
             name="contact"
-            placeholder="priya@example.com or 98xxxxxxxx"
-            autocomplete="email"
+            placeholder="Enter 10-digit WhatsApp number"
+            autocomplete="tel"
+            inputmode="numeric"
             required
           />
           <div class="form-error" id="err-contact" role="alert" aria-live="polite"></div>
@@ -191,7 +192,7 @@
       </div>
 
       <!-- Course Card CTA -->
-      <div class="course-card" id="cta-banner" aria-label="Course advertisement">
+      <a class="course-card" id="cta-banner" href="#" target="_blank" rel="noopener" aria-label="Course advertisement">
 
         <div class="course-card-top">
           <div>
@@ -199,7 +200,7 @@
             <h3 class="course-name" id="cta-course-name">AI Masterclass for UPSC Aspirants</h3>
             <p class="course-tagline" id="cta-course-tagline">Ace Your UPSC Preparation with AI.</p>
           </div>
-          <div class="course-price-badge" id="cta-course-price">₹500</div>
+          <div class="course-price-badge" id="cta-course-price">₹199</div>
         </div>
 
         <p class="course-desc" id="cta-course-desc"></p>
@@ -217,12 +218,12 @@
             <div class="course-trust" id="cta-course-trust"></div>
             <div class="course-urgency" id="cta-course-urgency"></div>
           </div>
-          <a class="btn-cta" id="btn-cta" href="#" target="_blank" rel="noopener">
+          <span class="btn-cta" id="btn-cta">
             Register Now →
-          </a>
+          </span>
         </div>
 
-      </div>
+      </a>
 
 
       <!-- Redirect countdown -->
@@ -278,9 +279,11 @@
     if (ev.time) $('cta-event-time').innerHTML = `⏰ <strong>${ev.time}</strong>`;
     if (ev.mode) $('cta-event-mode').innerHTML = `💻 <strong>${ev.mode}</strong>`;
 
+    const ctaBanner = $('cta-banner');
+    if (ctaBanner) ctaBanner.href = QUIZ_CONFIG.redirectUrl;
+
     const btnCta = $('btn-cta');
     btnCta.textContent = QUIZ_CONFIG.courseCtaText;
-    btnCta.href        = QUIZ_CONFIG.redirectUrl;
 
     /* ── Case study panel ────────────────────────────────── */
     if (QUIZ_CONFIG.caseStudy) {
@@ -387,9 +390,9 @@
     let userName = '';
 
     function validateContact(val) {
-      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const phoneRe = /^[6-9]\d{9}$/;
-      return emailRe.test(val.trim()) || phoneRe.test(val.replace(/\s/g,''));
+      const cleaned = val.replace(/[\s\-\(\)]/g, '');
+      const phoneRe = /^(?:\+?91|0)?[6-9]\d{9}$/;
+      return phoneRe.test(cleaned);
     }
 
     $('entry-form').addEventListener('submit', function (e) {
@@ -407,9 +410,9 @@
         $('err-name').textContent = '';
       }
 
-      // Contact
+      // WhatsApp contact
       if (!validateContact(contact)) {
-        $('err-contact').textContent = 'Enter a valid email or 10-digit mobile number.';
+        $('err-contact').textContent = 'Please enter a valid 10-digit WhatsApp number.';
         valid = false;
       } else {
         $('err-contact').textContent = '';

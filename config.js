@@ -67,7 +67,7 @@ Rectifying the batch means breaking open a completed 400-metre stretch, delaying
     time:  "5:00 PM",
     mode:  "Live Online"
   },
-  coursePrice:    "₹500",
+  coursePrice:    "₹199",
   courseTrust:    "Trusted by 10,000+ Aspirants",
   courseUrgency:  "Limited Seats Available 🚀",
   courseCtaText:  "Register Now →",

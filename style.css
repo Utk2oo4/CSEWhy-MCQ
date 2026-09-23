@@ -629,13 +629,27 @@ body {
 
 /* ── Course card CTA ────────────────────────────────────────── */
 .course-card {
-  background: var(--green, var(--tomato));
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
   background: var(--tomato);
   border-radius: 18px;
   padding: 26px 26px 22px;
   margin-bottom: 20px;
   box-shadow: 0 6px 28px rgba(232,75,26,0.26);
   color: #fff;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 34px rgba(232,75,26,0.38);
+  color: #fff;
+}
+
+.course-card:hover .btn-cta {
+  background: var(--bg);
+  transform: scale(1.03);
 }
 
 .course-card-top {
@@ -768,12 +782,12 @@ body {
   font-family: var(--font);
   font-size: 14px;
   font-weight: 700;
-  cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
   transition: background 0.2s, transform 0.15s;
   display: inline-block;
   flex-shrink: 0;
+  pointer-events: none;
 }
 
 .btn-cta:hover {
