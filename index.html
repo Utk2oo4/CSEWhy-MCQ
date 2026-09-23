@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GS4 Ethics Challenge — UPSC Paper IV Case Study</title>
+  <meta name="description" content="Attempt a 3-question UPSC GS Paper IV ethics case study, see how your answers compare to examiner expectations, and discover India's top IAS preparation program." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Top bar ───────────────────────────────────────────── -->
+  <header class="topbar" role="banner">
+    <div class="topbar-brand">
+      <div class="topbar-emblem" aria-hidden="true">IAS</div>
+      <div>
+        <div class="topbar-name" id="brand-name">UPSC Challenge</div>
+        <div class="topbar-tag">Civil Services · 2026</div>
+      </div>
+    </div>
+    <div id="topbar-right" aria-live="polite"></div>
+  </header>
+
+  <!-- ── Screens ───────────────────────────────────────────── -->
+  <main class="screens" id="app">
+
+    <!-- ══════════════════════════════════════════
+         SCREEN 1 — ENTRY
+    ═══════════════════════════════════════════ -->
+    <section class="screen active" id="screen-entry" aria-labelledby="entry-h1">
+
+      <div class="entry-hero">
+        <div class="entry-eyebrow" aria-hidden="true">GS Paper IV · Ethics</div>
+        <h1 class="entry-headline" id="entry-h1">
+          How would you decide as <em>Shashank Mehta?</em>
+        </h1>
+        <p class="entry-sub" id="entry-subtitle">
+          A real UPSC Paper IV case study. Three questions. See how an examiner would judge your answers.
+        </p>
+        <div class="entry-stats" role="list" aria-label="Quiz stats">
+          <div class="stat" role="listitem">
+            <span class="stat-num" id="stat-questions">3</span>
+            <span class="stat-label">Questions</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat-num">30<small style="font-size:14px;font-weight:500"> marks</small></span>
+            <span class="stat-label">Total marks</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat-num" id="stat-players">—</span>
+            <span class="stat-label">Attempts today</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="entry-form" id="entry-form" novalidate>
+        <div class="form-row">
+          <label class="form-label" for="input-name">Your name</label>
+          <input
+            class="form-input"
+            type="text"
+            id="input-name"
+            name="name"
+            placeholder="e.g. Priya Sharma"
+            autocomplete="name"
+            required
+          />
+          <div class="form-error" id="err-name" role="alert" aria-live="polite"></div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="input-contact">Email or phone number</label>
+          <input
+            class="form-input"
+            type="text"
+            id="input-contact"
+            name="contact"
+            placeholder="priya@example.com or 98xxxxxxxx"
+            autocomplete="email"
+            required
+          />
+          <div class="form-error" id="err-contact" role="alert" aria-live="polite"></div>
+        </div>
+
+        <button class="btn-primary" type="submit" id="btn-start">
+          Start the Quiz
+        </button>
+      </form>
+
+    </section><!-- /screen-entry -->
+
+
+    <!-- ══════════════════════════════════════════
+         SCREEN 2 — QUIZ
+    ═══════════════════════════════════════════ -->
+    <section class="screen" id="screen-quiz" aria-labelledby="question-heading">
+
+      <!-- Case study panel (shown once, collapsed after Q1) -->
+      <div class="case-panel" id="case-panel">
+        <div class="case-tag" id="case-tag">GS Paper IV · Ethics Case Study · Delhi Metro</div>
+        <div class="case-body" id="case-body"></div>
+        <button class="case-toggle" id="case-toggle" aria-expanded="true" aria-controls="case-body">
+          Hide case ↑
+        </button>
+      </div>
+
+      <!-- Progress -->
+      <div class="quiz-meta">
+        <p class="quiz-progress-label" aria-live="polite">
+          Question <span id="q-current">1</span> of <span id="q-total">3</span>
+        </p>
+
+        <!-- Timer ring -->
+        <div class="timer-wrap" aria-label="Time remaining">
+          <div class="timer-ring" id="timer-ring-wrap" role="timer" aria-live="off">
+            <svg viewBox="0 0 44 44" aria-hidden="true">
+              <circle class="ring-track" cx="22" cy="22" r="18" />
+              <circle class="ring-fill" id="ring-fill" cx="22" cy="22" r="18"
+                stroke-dasharray="113.1"
+                stroke-dashoffset="0" />
+            </svg>
+            <div class="timer-num" id="timer-num" aria-hidden="true">90</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-bar-wrap" aria-hidden="true">
+        <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+
+      <!-- Question card -->
+      <div class="question-card" role="group" aria-labelledby="question-heading">
+        <div class="question-meta-row">
+          <div class="question-num" id="question-num" aria-hidden="true">Question 1</div>
+          <div class="question-marks" id="question-marks" aria-hidden="true">10 marks</div>
+        </div>
+        <p class="question-text" id="question-heading">Loading…</p>
+        <p class="question-hint" id="question-hint"></p>
+      </div>
+
+      <!-- Options -->
+      <div class="options-list" id="options-list" role="radiogroup" aria-labelledby="question-heading"></div>
+
+      <!-- Per-option feedback (shown after answering) -->
+      <div class="feedback-list" id="feedback-list"></div>
+
+      <!-- Overall explanation -->
+      <div class="explanation" id="explanation" role="status" aria-live="polite"></div>
+
+      <!-- Next -->
+      <button class="btn-next" id="btn-next" aria-label="Next question">
+        Next question →
+      </button>
+
+    </section><!-- /screen-quiz -->
+
+
+    <!-- ══════════════════════════════════════════
+         SCREEN 3 — RESULTS + LEADERBOARD
+    ═══════════════════════════════════════════ -->
+    <section class="screen" id="screen-results" aria-labelledby="results-h2">
+
+      <!-- Score -->
+      <div class="results-header">
+        <div class="score-badge" aria-label="Your score">
+          <div>
+            <span class="score-value" id="final-score">0</span>
+            <span class="score-denom" id="score-denom">/5</span>
+          </div>
+          <div class="score-label">Your score</div>
+        </div>
+        <h2 class="results-title" id="results-h2" aria-live="polite">Well done!</h2>
+        <p class="results-sub" id="results-sub">See how you compare with other aspirants.</p>
+      </div>
+
+      <!-- Leaderboard -->
+      <div class="leaderboard-section">
+        <div class="section-heading">Leaderboard</div>
+        <table class="leaderboard-table" id="leaderboard-table" aria-label="Quiz leaderboard">
+          <thead>
+            <tr>
+              <th scope="col" style="width:44px">Rank</th>
+              <th scope="col">Name</th>
+              <th scope="col" style="width:80px">Score</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body">
+            <!-- filled by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Course Card CTA -->
+      <div class="course-card" id="cta-banner" aria-label="Course advertisement">
+
+        <div class="course-card-top">
+          <div>
+            <div class="course-by" id="cta-course-by">CSEWhy</div>
+            <h3 class="course-name" id="cta-course-name">AI Masterclass for UPSC Aspirants</h3>
+            <p class="course-tagline" id="cta-course-tagline">Ace Your UPSC Preparation with AI.</p>
+          </div>
+          <div class="course-price-badge" id="cta-course-price">₹500</div>
+        </div>
+
+        <p class="course-desc" id="cta-course-desc"></p>
+
+        <ul class="course-benefits" id="cta-course-benefits"></ul>
+
+        <div class="course-event" id="cta-course-event">
+          <span class="course-event-item" id="cta-event-date"></span>
+          <span class="course-event-item" id="cta-event-time"></span>
+          <span class="course-event-item" id="cta-event-mode"></span>
+        </div>
+
+        <div class="course-card-footer">
+          <div class="course-trust-urgency">
+            <div class="course-trust" id="cta-course-trust"></div>
+            <div class="course-urgency" id="cta-course-urgency"></div>
+          </div>
+          <a class="btn-cta" id="btn-cta" href="#" target="_blank" rel="noopener">
+            Register Now →
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- Redirect countdown -->
+      <div class="redirect-bar" role="status" aria-live="polite">
+        <p>Redirecting to the course in <span class="redirect-count" id="redirect-count">5</span>s…</p>
+        <div class="redirect-progress">
+          <div class="redirect-progress-fill" id="redirect-fill"></div>
+        </div>
+      </div>
+
+    </section><!-- /screen-results -->
+
+  </main><!-- /app -->
+
+  <script src="config.js"></script>
+  <script>
+  /* ═══════════════════════════════════════════════════════════
+     UPSC MCQ CHALLENGE — APP LOGIC
+  ═══════════════════════════════════════════════════════════ */
+
+  (function () {
+    'use strict';
+
+    /* ── Helpers ─────────────────────────────────────────── */
+    const $ = id => document.getElementById(id);
+    const STORAGE_KEY = 'upsc_leaderboard_v1';
+
+    /* ── Apply config to DOM ─────────────────────────────── */
+    $('brand-name').textContent     = QUIZ_CONFIG.title;
+    $('entry-subtitle').textContent = QUIZ_CONFIG.subtitle;
+    $('stat-questions').textContent = QUIZ_CONFIG.questions.length;
+    $('q-total').textContent        = QUIZ_CONFIG.questions.length;
+    $('score-denom').textContent    = '/' + QUIZ_CONFIG.questions.length;
+    $('cta-course-name').textContent    = QUIZ_CONFIG.courseName;
+    $('cta-course-by').textContent      = QUIZ_CONFIG.courseBy    || '';
+    $('cta-course-tagline').textContent = QUIZ_CONFIG.courseTagline;
+    $('cta-course-desc').textContent    = QUIZ_CONFIG.courseDesc   || '';
+    $('cta-course-price').textContent   = QUIZ_CONFIG.coursePrice  || '';
+    $('cta-course-trust').textContent   = QUIZ_CONFIG.courseTrust  || '';
+    $('cta-course-urgency').textContent = QUIZ_CONFIG.courseUrgency || '';
+
+    // Benefits list
+    const benefitsList = $('cta-course-benefits');
+    (QUIZ_CONFIG.courseBenefits || []).forEach(b => {
+      const li = document.createElement('li');
+      li.textContent = b;
+      benefitsList.appendChild(li);
+    });
+
+    // Event details
+    const ev = QUIZ_CONFIG.courseEvent || {};
+    if (ev.date) $('cta-event-date').innerHTML = `📅 <strong>${ev.date}</strong>`;
+    if (ev.time) $('cta-event-time').innerHTML = `⏰ <strong>${ev.time}</strong>`;
+    if (ev.mode) $('cta-event-mode').innerHTML = `💻 <strong>${ev.mode}</strong>`;
+
+    const btnCta = $('btn-cta');
+    btnCta.textContent = QUIZ_CONFIG.courseCtaText;
+    btnCta.href        = QUIZ_CONFIG.redirectUrl;
+
+    /* ── Case study panel ────────────────────────────────── */
+    if (QUIZ_CONFIG.caseStudy) {
+      $('case-tag').textContent  = QUIZ_CONFIG.caseStudyTag || '';
+      // Convert newlines to paragraphs
+      $('case-body').innerHTML = QUIZ_CONFIG.caseStudy
+        .split(/\n\n+/)
+        .map(p => `<p>${p.trim().replace(/\n/g,' ')}</p>`)
+        .join('');
+    } else {
+      const cp = $('case-panel');
+      if (cp) cp.style.display = 'none';
+    }
+
+    // Case toggle
+    const caseToggle = $('case-toggle');
+    const caseBody   = $('case-body');
+    if (caseToggle) {
+      caseToggle.addEventListener('click', () => {
+        const collapsed = caseBody.classList.toggle('collapsed');
+        caseToggle.textContent = collapsed ? 'Read case ↓' : 'Hide case ↑';
+        caseToggle.setAttribute('aria-expanded', String(!collapsed));
+      });
+    }
+
+    /* ── Leaderboard — dual mode (MongoDB API or localStorage) ── */
+    const isFileMode = window.location.protocol === 'file:';
+    const rawApiUrl  = (QUIZ_CONFIG.apiUrl || '').trim();
+    // If empty on a live web server, use relative path '' (same domain). On file://, require apiUrl or fallback.
+    const API_URL    = rawApiUrl || (!isFileMode ? '' : '');
+    const USE_MONGO  = QUIZ_CONFIG.offlineMode ? false : (!!rawApiUrl || !isFileMode);
+    let userContact  = '';
+
+    function loadLeaderboard() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+      catch { return []; }
+    }
+
+    function saveLocalEntry(name, score) {
+      const board = loadLeaderboard();
+      board.push({ name, score, ts: Date.now() });
+      board.sort((a, b) => b.score - a.score || a.ts - b.ts);
+      const trimmed = board.slice(0, 50);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
+      return trimmed;
+    }
+
+    async function postScore(name, score, contact) {
+      try {
+        await fetch(`${API_URL}/api/score`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            score,
+            total: QUIZ_CONFIG.questions.length,
+            contact
+          })
+        });
+      } catch (e) { /* silent fail — local fallback */ }
+    }
+
+    async function fetchLeaderboard() {
+      try {
+        const res  = await fetch(`${API_URL}/api/leaderboard`);
+        const json = await res.json();
+        if (json.ok) return json.data; // [{name, score, total, createdAt}]
+      } catch (e) {}
+      return null;
+    }
+
+    /* ── Stat: attempts today ─────────────────────────────── */
+    (async function updateTodayStat() {
+      if (USE_MONGO) {
+        const data = await fetchLeaderboard();
+        if (data) {
+          const today = new Date().toDateString();
+          const count = data.filter(e => new Date(e.createdAt).toDateString() === today).length;
+          $('stat-players').textContent = count || '—';
+          return;
+        }
+      }
+      const board = loadLeaderboard();
+      const today = new Date().toDateString();
+      const todayCount = board.filter(e => new Date(e.ts).toDateString() === today).length;
+      $('stat-players').textContent = todayCount || '—';
+    })();
+
+    /* ── Screen navigation ───────────────────────────────── */
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      $(id).classList.add('active');
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       SCREEN 1 — ENTRY VALIDATION
+    ───────────────────────────────────────────────────────── */
+    let userName = '';
+
+    function validateContact(val) {
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRe = /^[6-9]\d{9}$/;
+      return emailRe.test(val.trim()) || phoneRe.test(val.replace(/\s/g,''));
+    }
+
+    $('entry-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      const name    = $('input-name').value.trim();
+      const contact = $('input-contact').value.trim();
+
+      // Name
+      if (name.length < 2) {
+        $('err-name').textContent = 'Please enter your full name.';
+        valid = false;
+      } else {
+        $('err-name').textContent = '';
+      }
+
+      // Contact
+      if (!validateContact(contact)) {
+        $('err-contact').textContent = 'Enter a valid email or 10-digit mobile number.';
+        valid = false;
+      } else {
+        $('err-contact').textContent = '';
+      }
+
+      if (!valid) return;
+
+      userName    = name;
+      userContact = contact;
+      startQuiz();
+    });
+
+    /* ─────────────────────────────────────────────────────────
+       SCREEN 2 — QUIZ ENGINE
+    ───────────────────────────────────────────────────────── */
+    const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+    let currentQ    = 0;
+    let score       = 0;
+    let answered    = false;
+    let timerInterval = null;
+    let timeLeft    = QUIZ_CONFIG.secondsPerQuestion;
+
+    const CIRCUMFERENCE = 2 * Math.PI * 18; // r=18 → 113.1
+
+    function startQuiz() {
+      currentQ = 0;
+      score    = 0;
+      showScreen('screen-quiz');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q      = QUIZ_CONFIG.questions[currentQ];
+      const total  = QUIZ_CONFIG.questions.length;
+      answered     = false;
+
+      // Collapse case panel after first question
+      if (currentQ > 0 && caseBody && !caseBody.classList.contains('collapsed')) {
+        caseBody.classList.add('collapsed');
+        if (caseToggle) {
+          caseToggle.textContent = 'Read case ↓';
+          caseToggle.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      // Meta
+      $('q-current').textContent       = currentQ + 1;
+      $('question-num').textContent     = 'Question ' + (currentQ + 1);
+      $('question-marks').textContent   = (q.marks || 10) + ' marks';
+      $('question-heading').textContent = q.q;
+      const hintEl = $('question-hint');
+      if (hintEl) {
+        hintEl.textContent = q.hint || '';
+        hintEl.style.display = q.hint ? '' : 'none';
+      }
+
+      // Progress bar
+      $('progress-fill').style.width = ((currentQ / total) * 100) + '%';
+
+      // Options
+      const list = $('options-list');
+      list.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className  = 'option-btn';
+        btn.type       = 'button';
+        btn.id         = 'option-' + i;
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', 'false');
+        btn.innerHTML  = `<span class="option-letter">${LETTERS[i]}</span><span>${opt}</span>`;
+        btn.addEventListener('click', () => handleAnswer(i, q));
+        list.appendChild(btn);
+      });
+
+      // Clear feedback + explanation + next
+      $('feedback-list').innerHTML = '';
+      const exp = $('explanation');
+      exp.textContent = '';
+      exp.classList.remove('visible');
+      const btn = $('btn-next');
+      btn.classList.remove('visible');
+      btn.textContent = currentQ < total - 1 ? 'Next question →' : 'View my results →';
+
+      // Timer
+      startTimer(q);
+    }
+
+    function handleAnswer(chosen, q) {
+      if (answered) return;
+      answered = true;
+      stopTimer();
+
+      const correct = q.correct;
+      const opts    = $('options-list').querySelectorAll('.option-btn');
+
+      opts.forEach((btn, i) => {
+        btn.disabled = true;
+        btn.setAttribute('aria-checked', i === chosen ? 'true' : 'false');
+        if (i === correct) btn.classList.add('correct');
+      });
+
+      if (chosen === correct) {
+        score++;
+        opts[chosen].classList.add('correct');
+      } else if (chosen >= 0) {
+        opts[chosen].classList.add('wrong');
+      }
+
+      // Per-option feedback labels
+      const feedbackList = $('feedback-list');
+      feedbackList.innerHTML = '';
+      if (q.feedback && q.feedback.length) {
+        q.feedback.forEach((fb, i) => {
+          const isCorrect = (i === correct);
+          const isChosen  = (i === chosen);
+          const div = document.createElement('div');
+          div.className = 'feedback-item' + (isCorrect ? ' feedback-correct' : '') + (isChosen && !isCorrect ? ' feedback-chosen' : '');
+          div.innerHTML = `
+            <div class="feedback-header">
+              <span class="feedback-letter">${LETTERS[i]}</span>
+              <span class="feedback-label">${fb.label}</span>
+            </div>
+            <p class="feedback-detail">${fb.detail}</p>
+          `;
+          feedbackList.appendChild(div);
+        });
+      }
+
+      // Overall explanation
+      if (q.explain) {
+        $('explanation').textContent = q.explain;
+        $('explanation').classList.add('visible');
+      }
+
+      $('btn-next').classList.add('visible');
+    }
+
+    $('btn-next').addEventListener('click', function () {
+      // If timer ran out and user never clicked, treat as unanswered (already handled by timer)
+      currentQ++;
+      if (currentQ < QUIZ_CONFIG.questions.length) {
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    });
+
+    /* ── Timer ───────────────────────────────────────────── */
+    function startTimer(q) {
+      if (!QUIZ_CONFIG.secondsPerQuestion) return;
+
+      timeLeft = QUIZ_CONFIG.secondsPerQuestion;
+      updateRing(timeLeft);
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateRing(timeLeft);
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          // Auto-reveal correct answer if not answered
+          if (!answered) handleAnswer(-1, q.correct, q.explain);
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function updateRing(t) {
+      const total    = QUIZ_CONFIG.secondsPerQuestion;
+      const fraction = t / total;
+      const offset   = CIRCUMFERENCE * (1 - fraction);
+      const fill     = $('ring-fill');
+      const num      = $('timer-num');
+
+      fill.style.strokeDashoffset = offset;
+      num.textContent = Math.max(t, 0);
+
+      const urgent = t <= 10;
+      fill.classList.toggle('urgent', urgent);
+      num.classList.toggle('urgent', urgent);
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       SCREEN 3 — RESULTS & LEADERBOARD
+    ───────────────────────────────────────────────────────── */
+    let livePollingInterval = null;
+
+    async function showResults() {
+      stopTimer();
+      const total = QUIZ_CONFIG.questions.length;
+      const pct   = Math.round((score / total) * 100);
+
+      $('final-score').textContent = score;
+
+      let title, sub;
+      if (pct === 100)    { title = 'Perfect score, ' + userName + '!'; sub = 'Outstanding — top 1% of aspirants.'; }
+      else if (pct >= 80) { title = 'Excellent, ' + userName + '!'; sub = 'You\'re ready for serious preparation.'; }
+      else if (pct >= 60) { title = 'Good effort, ' + userName + '!'; sub = 'A bit more practice and you\'ll excel.'; }
+      else if (pct >= 40) { title = 'Keep going, ' + userName + '.'; sub = 'The real exam is harder — start now.'; }
+      else                { title = 'Room to grow, ' + userName + '.'; sub = 'The right guidance can change everything.'; }
+
+      $('results-h2').textContent  = title;
+      $('results-sub').textContent = sub;
+
+      showScreen('screen-results');
+
+      if (USE_MONGO) {
+        // Show loading state
+        $('leaderboard-body').innerHTML = `<tr><td colspan="3" style="text-align:center;padding:20px;color:var(--ink-dim);font-size:13px">Submitting your score…</td></tr>`;
+
+        // Post score to MongoDB
+        await postScore(userName, score, userContact);
+
+        // Fetch leaderboard
+        const data = await fetchLeaderboard();
+        if (data) {
+          renderLeaderboard(data, userName, true);
+        } else {
+          const board = saveLocalEntry(userName, score);
+          renderLeaderboard(board, userName, false);
+        }
+
+        // LIVE badge
+        const heading = document.querySelector('.section-heading');
+        if (heading && !heading.querySelector('.live-badge')) {
+          const badge = document.createElement('span');
+          badge.className = 'live-badge';
+          badge.textContent = '● LIVE';
+          badge.style.cssText = 'font-size:10px;font-weight:700;color:var(--tomato);letter-spacing:0.08em;margin-left:4px;';
+          heading.prepend(badge);
+        }
+
+        // Poll every 8 seconds
+        livePollingInterval = setInterval(async () => {
+          const fresh = await fetchLeaderboard();
+          if (fresh) renderLeaderboard(fresh, userName, true);
+        }, 8000);
+
+      } else {
+        // Local mode
+        const board = saveLocalEntry(userName, score);
+        renderLeaderboard(board, userName, false);
+      }
+
+      startRedirectCountdown();
+    }
+
+    function renderLeaderboard(board, myName, isSheetsMode) {
+      const tbody = $('leaderboard-body');
+      tbody.innerHTML = '';
+
+      // Normalise: Sheets entries have .score, local entries also have .score
+      const top = board.slice(0, 10);
+      let myRankMarked = false;
+
+      top.forEach((entry, i) => {
+        const rank  = i + 1;
+        const eScore = isSheetsMode ? entry.score : entry.score;
+        const isYou  = !myRankMarked && entry.name === myName && eScore === score;
+        if (isYou) myRankMarked = true;
+
+        const tr = document.createElement('tr');
+        if (isYou) tr.classList.add('is-you');
+
+        let rankClass = '';
+        if (rank === 1) rankClass = 'gold-rank';
+        else if (rank === 2) rankClass = 'silver-rank';
+        else if (rank === 3) rankClass = 'bronze-rank';
+
+        const nameDisplay = isYou
+          ? entry.name + ' <span class="you-tag">You</span>'
+          : entry.name;
+
+        tr.innerHTML = `
+          <td><span class="rank-badge ${rankClass}">${rank}</span></td>
+          <td>${nameDisplay}</td>
+          <td>${eScore}/${QUIZ_CONFIG.questions.length}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // If user not in top 10, show their rank below a separator
+      if (!myRankMarked) {
+        const myIdx = board.findIndex(e => e.name === myName && e.score === score);
+        if (myIdx > 9) {
+          const sep = document.createElement('tr');
+          sep.innerHTML = `<td colspan="3" style="text-align:center;font-size:12px;color:var(--ink-dim);padding:8px">···</td>`;
+          tbody.appendChild(sep);
+
+          const myEntry = board[myIdx];
+          const tr = document.createElement('tr');
+          tr.classList.add('is-you');
+          tr.innerHTML = `
+            <td><span class="rank-badge">${myIdx + 1}</span></td>
+            <td>${myEntry.name} <span class="you-tag">You</span></td>
+            <td>${myEntry.score}/${QUIZ_CONFIG.questions.length}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+      }
+    }
+
+    /* ── Redirect countdown ──────────────────────────────── */
+    function startRedirectCountdown() {
+      let secs = QUIZ_CONFIG.redirectSeconds;
+      $('redirect-count').textContent = secs;
+
+      const fill = $('redirect-fill');
+      fill.style.transform = 'scaleX(1)';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          fill.style.transitionDuration = secs + 's';
+          fill.style.transform = 'scaleX(0)';
+        });
+      });
+
+      const interval = setInterval(() => {
+        secs--;
+        $('redirect-count').textContent = Math.max(secs, 0);
+        if (secs <= 0) {
+          clearInterval(interval);
+          clearInterval(livePollingInterval);
+          window.location.href = QUIZ_CONFIG.redirectUrl;
+        }
+      }, 1000);
+    }
+
+  })();
+  </script>
+
+</body>
+</html>
