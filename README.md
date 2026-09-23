@@ -48,12 +48,29 @@ MCQ-Online/
 ├── style.css               # Design tokens, typography, glassmorphism UI, responsive layouts
 ├── config.js               # Centralized configuration (quiz metadata, questions, CTA, timers)
 ├── server.js               # Express + MongoDB backend server (score submission, leaderboard)
+├── vercel.json             # Vercel deployment routing and configuration
+├── api/
+│   └── index.js            # Vercel Serverless Function entry point
 ├── apps-script-backend.gs  # Optional Google Apps Script backend for Google Sheets
 ├── questions.txt           # Reference question bank and examiner rubrics
 ├── package.json            # Node.js dependencies and run scripts
 ├── .env.example            # Template for environment variables
 └── README.md               # Project documentation
 ```
+
+---
+
+## ☁️ Deploying to Vercel
+
+1. Push your repository to GitHub.
+2. In [Vercel Dashboard](https://vercel.com/new), import your repository.
+3. In **Project Settings** → **Environment Variables**, add:
+   - `MONGODB_URI`: Your MongoDB connection string.
+   - `DB_NAME`: `upsc_quiz` (optional, default)
+   - `COL_NAME`: `leaderboard` (optional, default)
+4. Click **Deploy**. Vercel will:
+   - Serve `index.html`, `style.css`, and `config.js` instantly via its global Edge CDN.
+   - Run `/api/score`, `/api/leaderboard`, and `/api/health` as Serverless Functions via `api/index.js`.
 
 ---
 
@@ -125,7 +142,7 @@ const QUIZ_CONFIG = {
   caseStudy: `...`,
 
   // API Configuration
-  apiUrl: "http://localhost:3001", // Or empty "" for localStorage offline mode
+  apiUrl: "", // Empty string automatically connects to current domain in production & local server
 
   // Per-question timer (seconds, 0 to disable)
   secondsPerQuestion: 90,

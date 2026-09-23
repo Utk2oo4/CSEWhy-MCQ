@@ -307,11 +307,17 @@
     }
 
     /* ── Leaderboard — dual mode (MongoDB API or localStorage) ── */
-    const isFileMode = window.location.protocol === 'file:';
-    const rawApiUrl  = (QUIZ_CONFIG.apiUrl || '').trim();
-    // If empty on a live web server, use relative path '' (same domain). On file://, require apiUrl or fallback.
-    const API_URL    = rawApiUrl || (!isFileMode ? '' : '');
-    const USE_MONGO  = QUIZ_CONFIG.offlineMode ? false : (!!rawApiUrl || !isFileMode);
+    const isFileMode  = window.location.protocol === 'file:';
+    let rawApiUrl     = (QUIZ_CONFIG.apiUrl || '').trim();
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+    // If configured with localhost but running in production (e.g. Vercel), fall back to relative path
+    if (rawApiUrl.includes('localhost') && !isLocalhost) {
+      rawApiUrl = '';
+    }
+
+    const API_URL   = rawApiUrl || (!isFileMode ? '' : '');
+    const USE_MONGO = QUIZ_CONFIG.offlineMode ? false : (!!rawApiUrl || !isFileMode);
     let userContact  = '';
 
     function loadLeaderboard() {

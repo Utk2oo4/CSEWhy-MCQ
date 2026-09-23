@@ -42,13 +42,11 @@ Rectifying the batch means breaking open a completed 400-metre stretch, delaying
 
   /**
    * MONGODB BACKEND API
-   * URL of your running server.js instance.
-   * Leave empty ("") to fall back to localStorage (offline/demo mode).
-   *
-   * Local dev:   "http://localhost:3001"
-   * Production:  "https://your-server.com"
+   * URL of your running server instance.
+   * Leave empty ("") to automatically use the current domain (recommended for Vercel & local server).
+   * Or set an explicit URL like "http://localhost:3001" if running separately.
    */
-  apiUrl: "http://localhost:3001",
+  apiUrl: "",
 
   /**
    * COURSE CTA
