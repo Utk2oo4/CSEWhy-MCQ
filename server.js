@@ -72,8 +72,20 @@ app.get(['/api/health', '/health'], async (_req, res) => {
   res.json({ ok: true, database: dbStatus, ts: new Date().toISOString() });
 });
 
-// Root route - serve index.html
-app.get('/', (_req, res) => {
+// Static asset routes
+app.get('/style.css', (_req, res) => {
+  res.setHeader('Content-Type', 'text/css');
+  res.sendFile(path.join(__dirname, 'style.css'));
+});
+
+app.get('/config.js', (_req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(path.join(__dirname, 'config.js'));
+});
+
+// Root & index routes - serve index.html
+app.get(['/', '/index.html'], (_req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 

@@ -1,5 +1,13 @@
 {
   "version": 2,
+  "functions": {
+    "server.js": {
+      "includeFiles": "style.css,config.js,index.html"
+    },
+    "api/*.js": {
+      "includeFiles": "style.css,config.js,index.html"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
